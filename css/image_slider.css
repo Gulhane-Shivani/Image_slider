@@ -1,0 +1,228 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0%;
+}
+.container{
+    margin: 5px;
+    height: 100vh;
+    width: 99%;    
+    background-color: #811616b2;
+    border: 2px solid black;
+}
+.image_cont .item img{
+    border-left: 3px solid bisque;
+    position: absolute;
+    left: 40%;
+    height: 100vh;
+    width: 60%;
+    object-fit: fill;
+    opacity: 0.8;
+    padding: 10px 10px 0px 0px;
+    
+}
+
+.image_cont .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+.image_cont .item::after{
+    content: '';
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.image_cont .item .content{
+    position: absolute;
+    left: 4%;
+    top: 15%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+    color:rgb(247, 242, 237);
+}
+
+.image_cont .item.active .content{
+    position: absolute;
+    top: 15%;
+    left: 4%;
+    color:white;
+    background-color: transparent;
+    width: 500px;
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.9s 0.6s ease-in-out 1 forwards;
+
+} 
+@keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.content p{
+     font-size: larger;
+     font-style:italic;
+     animation-duration: 1.3s;
+}
+.image_cont .item.active{
+    opacity: 1;
+}
+
+.arrows #prev{
+    position: absolute;
+    top: 45%;
+    left: 42%;
+}
+.arrows #next{
+    position: absolute;
+    top: 45%;
+    right: 30px;
+}
+.arrows button{
+    background-color: rgba(248, 181, 181, 0.878);
+    border: none;
+    font-family: monospace;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size:xx-large;
+    color: #7b16c7;
+    transition: .5s;
+}
+.arrows button:hover{
+    background-color: #eee;
+    color: rgb(9, 9, 230);
+}
+
+.thumbnail{
+    position: absolute;
+    bottom: 10px;
+    left: 4%;
+    height: 275px;
+    width:80%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items:center;
+    /* justify-content:center; */
+    opacity: 1;
+    overflow: auto;
+}
+ .thumbnail .item{
+    width: 160px;
+    height: 250px;
+    filter: brightness(0.6);
+    transition: .5s;
+    display: flex;
+    padding:0px 10px;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.thumbnail .item img{
+    height: 100%;
+    width: 100%; 
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow:1px 1px 1px 1px rgba(238, 240, 242, 0.466)
+
+}
+.thumbnail .item label{
+    position: absolute;
+    padding: 10px;
+    bottom: 5%;
+    color: rgb(30, 32, 33);
+    font-size: 1rem;    
+    background-color:rgba(230, 202, 223, 0.744);
+
+}
+.thumbnail .item.active{
+    filter: brightness(1.5);
+}
+.thumbnail::-webkit-scrollbar{
+    width: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .thumbnail{
+        justify-content: start;
+    }
+    .content p{
+        font-size:large;
+    }
+    .image_cont .item.active .content{
+        top : 12%;
+        width: 200px;
+    }
+
+    .image_cont .item .content{
+        width: 200px;
+        top : 12%;
+
+    }
+}
+@media screen and (max-width: 530px) {
+    .thumbnail{
+        justify-content: start;
+    }
+    .content p{
+        font-size:small;
+    }
+    .content h1{
+        font-size: large;
+
+    }
+    .image_cont .item.active .content{
+        width: 200px;
+        top: 25%;
+        left: 25%;
+        padding: 0%;
+    }
+
+    .image_cont .item .content{
+        width: 200px;
+        padding: 0%;
+        top: 25%;
+        left: 25%;
+
+   }
+    .container{
+    height: 100vh;
+    width: 99%;    
+    }
+    .image_cont .item img{
+        position: absolute;
+        left: 0%;
+        height: 100vh;
+        width: 100%;
+        object-fit:cover;
+        padding:5px;
+        
+    }
+    .arrows #prev{
+        top: 50%;
+        left: 6%;
+    }
+    .arrows #next{
+        position: absolute;
+        top: 50%;
+        right:6%;
+    }
+    .arrows button{
+        
+        width: 30px;
+        height: 30px;
+        font-size:large;        
+    }
+    
+
+}
